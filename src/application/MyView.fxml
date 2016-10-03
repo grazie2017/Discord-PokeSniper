@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
@@ -21,18 +20,6 @@
 
 <AnchorPane minHeight="250.0" minWidth="605.0" prefHeight="400.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
 	<children>
-      <AnchorPane prefHeight="39.0" prefWidth="53.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <Button fx:id="MoreInfo" defaultButton="true" mnemonicParsing="false" onAction="#showPopUp" prefHeight="36.0" prefWidth="33.0" style="-fx-background-radius: 25px;" text="?" textOverrun="CLIP" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets top="17.0" />
-               </opaqueInsets>
-            </Button>
-         </children>
-      </AnchorPane>
       <BorderPane prefHeight="622.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -44,9 +31,6 @@
             						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="141.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="23.0" />
             					</columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints />
-                           </rowConstraints>
             				</GridPane>
             			</content>
             		</ScrollPane>
@@ -113,7 +97,7 @@
                                  <children>
                                     <AnchorPane layoutX="-2.0" prefHeight="31.0" prefWidth="597.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                              				<Button id="StartBot" fx:id="StartBot" mnemonicParsing="false" onAction="#startTheBot" prefHeight="31.0" prefWidth="343.0" text="Start catching 100% IV pokemon for me!!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="10.0" />
+                              				<Button id="StartBot" fx:id="StartBot" mnemonicParsing="false" onAction="#startTheBot" prefHeight="31.0" prefWidth="343.0" text="Start catching 100 IV!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="10.0" />
                                        </children>
                                     </AnchorPane>
                                     <ImageView fitHeight="30.0" fitWidth="100.0" focusTraversable="true" layoutX="354.0" layoutY="1.0" onMouseClicked="#openPaypalLink" onMousePressed="#openPaypalLink" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -144,5 +128,20 @@
             </BorderPane>
          </center>
       </BorderPane>
+      <AnchorPane prefHeight="39.0" prefWidth="38.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Button fx:id="MoreInfo" defaultButton="true" mnemonicParsing="false" onAction="#showPopUp" prefHeight="36.0" prefWidth="33.0" rotate="31.6" style="-fx-background-radius: 25px;" text="?" textOverrun="CLIP" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets top="17.0" />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
 	</children>
 </AnchorPane>
