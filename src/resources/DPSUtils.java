@@ -25,7 +25,7 @@ import threads.DiscordConnection;
 public class DPSUtils {
 	private static String currentDirectory = null;
 	private static DiscordConnection disCon;
-	private static String version = "v1.0";
+	private static String version = "v1.1";
 	private static Boolean running = false;
 	public static double formatCoords(double coords) {
 		DecimalFormat df = new DecimalFormat("000.00000");
