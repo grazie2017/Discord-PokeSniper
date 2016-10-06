@@ -26,7 +26,7 @@
          <left>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-            		<ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="443.0" prefViewportHeight="492.0" prefViewportWidth="170.0" prefWidth="191.0" BorderPane.alignment="CENTER">
+            		<ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="290.0" prefViewportHeight="492.0" prefViewportWidth="170.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             			<content>
             				<GridPane fx:id="PokeListGrid" layoutX="710.0" prefHeight="631.0" prefWidth="188.0" style="-fx-padding: 3px;">
             					<columnConstraints>
@@ -35,6 +35,9 @@
             					</columnConstraints>
             				</GridPane>
             			</content>
+                     <BorderPane.margin>
+                        <Insets left="5.0" />
+                     </BorderPane.margin>
             		</ScrollPane>
                </center>
                <top>
@@ -50,40 +53,28 @@
                            </stops>
                         </RadialGradient>
                      </textFill>
+                     <BorderPane.margin>
+                        <Insets left="6.0" right="1.0" />
+                     </BorderPane.margin>
                   </Label>
                </top>
                <bottom>
-                  <AnchorPane prefHeight="102.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="8.0" layoutY="2.0" prefHeight="32.0" prefWidth="63.0" text="Caught:" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="40.0" />
-                        <Label fx:id="pokeCounter" layoutX="147.0" layoutY="2.0" prefHeight="32.0" prefWidth="28.0" text="000" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="40.0" />
-                        <Button fx:id="resetCounter" layoutX="135.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#resetCounterNow" onMousePressed="#resetCounterNow" prefHeight="32.0" prefWidth="57.0" text="Reset" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
-                        <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#selectAllpokemons" onMousePressed="#selectAllpokemons" prefHeight="31.0" prefWidth="96.0" text="Select all" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                        <Button layoutX="94.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#deSelectAllPokemons" onMousePressed="#deSelectAllPokemons" prefHeight="31.0" prefWidth="96.0" text="Deselect all" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                        <TextField fx:id="totalAmount" alignment="CENTER" layoutX="101.0" layoutY="41.0" onInputMethodTextChanged="#changeTotalAmount" onKeyPressed="#changeTotalAmount" onKeyReleased="#changeTotalAmount" onKeyTyped="#changeTotalAmount" prefHeight="31.0" prefWidth="38.0" text="999" AnchorPane.bottomAnchor="40.0" AnchorPane.topAnchor="40.0">
+                        <Label layoutX="6.0" layoutY="38.0" prefHeight="32.0" prefWidth="53.0" text="Caught:" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="141.0" />
+                        <Label fx:id="pokeCounter" layoutX="64.0" layoutY="75.0" prefHeight="32.0" prefWidth="28.0" text="000" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="108.0" />
+                        <Button fx:id="resetCounter" layoutX="143.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#resetCounterNow" onMousePressed="#resetCounterNow" prefHeight="32.0" prefWidth="57.0" text="Reset" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+                        <Button layoutX="5.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#selectAllpokemons" onMousePressed="#selectAllpokemons" prefHeight="31.0" prefWidth="96.0" text="Select all" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" />
+                        <Button layoutX="101.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#deSelectAllPokemons" onMousePressed="#deSelectAllPokemons" prefHeight="31.0" prefWidth="96.0" text="Deselect all" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="0.0" />
+                        <TextField fx:id="totalAmount" alignment="CENTER" layoutX="101.0" layoutY="75.0" onInputMethodTextChanged="#changeTotalAmount" onKeyPressed="#changeTotalAmount" onKeyReleased="#changeTotalAmount" onKeyTyped="#changeTotalAmount" prefHeight="31.0" prefWidth="38.0" text="999" AnchorPane.bottomAnchor="5.0">
                            <padding>
                               <Insets left="5.0" right="4.0" />
                            </padding>
                         </TextField>
-                        <CheckBox fx:id="farmPokestops" layoutX="6.0" layoutY="78.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="168.0" selected="true" text="Auto farm pokeballs" />
-                        <Button fx:id="MoreInfo1" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="178.0" layoutY="77.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="22.0" text="?" textOverrun="CLIP">
+                        <Label layoutX="90.0" layoutY="79.0" text="/" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="101.0">
                            <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets top="17.0" />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
-                           </padding>
-                           <tooltip>
-                              <Tooltip text="Auto start Masterball bot to farm pokestops" />
-                           </tooltip>
-                        </Button>
-                        <Label layoutX="90.0" layoutY="44.0" text="/" AnchorPane.topAnchor="44.0" />
+                              <Font name="System Bold" size="18.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
                </bottom>
@@ -114,14 +105,14 @@
                      <top>
                         <AnchorPane prefHeight="30.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane prefHeight="30.0" prefWidth="136.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane prefHeight="30.0" prefWidth="129.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                        				<Label layoutX="13.0" layoutY="89.0" prefHeight="30.0" prefWidth="124.0" text="Your Discord key:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0" />
+                        				<Label layoutX="13.0" layoutY="89.0" prefHeight="30.0" prefWidth="118.0" text="Your Discord key:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="126.0" prefHeight="36.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane layoutX="126.0" prefHeight="36.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                        				<TextField fx:id="token" cache="true" layoutX="96.0" layoutY="81.0" minWidth="-Infinity" onKeyReleased="#updateToken" pickOnBounds="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+                        				<TextField fx:id="token" cache="true" layoutX="96.0" layoutY="81.0" minWidth="-Infinity" onKeyReleased="#updateToken" pickOnBounds="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -134,10 +125,13 @@
                                  <children>
                                     <AnchorPane layoutX="-2.0" prefHeight="31.0" prefWidth="597.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                              				<Button id="StartBot" fx:id="StartBot" mnemonicParsing="false" onAction="#startTheBot" prefHeight="31.0" prefWidth="343.0" text="Start catching 100 IV!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="10.0" />
+                              				<Button id="StartBot" fx:id="StartBot" mnemonicParsing="false" onAction="#startTheBot" prefHeight="23.0" prefWidth="287.0" text="Start catching 100 IV!" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="2.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding></Button>
                                        </children>
                                     </AnchorPane>
-                                    <ImageView fitHeight="30.0" fitWidth="100.0" focusTraversable="true" layoutX="354.0" layoutY="1.0" onMouseClicked="#openPaypalLink" onMousePressed="#openPaypalLink" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <ImageView fitHeight="27.0" fitWidth="100.0" focusTraversable="true" layoutX="354.0" layoutY="1.0" onMouseClicked="#openPaypalLink" onMousePressed="#openPaypalLink" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.0">
                                        <image>
                                           <Image url="images/btn_donate_LG.gif" />
                                        </image>
@@ -151,11 +145,44 @@
                            <center>
                               <AnchorPane prefHeight="46.0" prefWidth="434.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ScrollPane fx:id="ScrollForLog" layoutX="56.0" layoutY="64.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="306.0" style="-fx-background: #666666;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <ScrollPane fx:id="ScrollForLog" layoutX="4.0" layoutY="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="306.0" style="-fx-background: #666666;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                                        <content>
                                           <VBox fx:id="LogArea" cacheShape="false" centerShape="false" depthTest="DISABLE" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="115.0" scaleShape="false" style="-fx-background-color: transparent;;" />
                                        </content>
                                     </ScrollPane>
+                                    <AnchorPane layoutX="4.0" layoutY="246.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0">
+                                       <children>
+                                          <CheckBox fx:id="farmPokestops" layoutX="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" selected="true" text="Auto farm pokeballs" />
+                                          <Button fx:id="MoreInfo1" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="166.0" layoutY="4.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="22.0" text="?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets top="17.0" />
+                                             </opaqueInsets>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <padding>
+                                                <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                                             </padding>
+                                             <tooltip>
+                                                <Tooltip text="Auto start Masterball bot to farm pokestops" />
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="194.0" layoutY="248.0" prefHeight="28.0" prefWidth="145.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="10.0">
+                                       <children>
+                                          <Label layoutX="3.0" layoutY="11.0" prefHeight="20.0" prefWidth="96.0" text="Waiting time:" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="3.0" />
+                                          <TextField fx:id="waitingTime" alignment="CENTER" layoutX="95.0" layoutY="11.0" onInputMethodTextChanged="#changeWaitingTime" onKeyPressed="#changeWaitingTime" onKeyReleased="#changeWaitingTime" onKeyTyped="#changeWaitingTime" prefHeight="21.0" prefWidth="38.0" text="9999" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="11.0">
+                                             <padding>
+                                                <Insets left="1.0" right="1.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="119.0" layoutY="2.0" prefHeight="15.0" prefWidth="7.0" text="s" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" />
+                                       </children>
+                                    </AnchorPane>
                                  </children></AnchorPane>
                            </center>
                         </BorderPane>
