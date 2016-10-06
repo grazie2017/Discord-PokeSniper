@@ -9,6 +9,14 @@ Enjoy :)
 
 ---------------------------------------------------------------
 
+<B><h1>Please make a donation if you can afford to</h1></B>
+https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=y7vAKlDZWfmNLfou0v9SyUUjgmrWjNENkNZGDuLSZjCi3MW1UIqnjd4_7NS&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088
+
+Thanks for the donations until now. I really appreciate all the donations. :)
+
+---------------------------------------------------------------
+
+
 ![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131492/42633ebe-8b58-11e6-873c-11de7d026051.jpg)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131490/425f3300-8b58-11e6-8aec-984a2cfce4d0.jpg)
