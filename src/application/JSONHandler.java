@@ -69,7 +69,7 @@ public class JSONHandler {
 							checkName = pokeName;
 						if (number == 122)
 							checkName = "Mr. Mime";
-						if(checkName == null) 
+						if (checkName == null)
 							checkName = pokeName;
 						pokehash.put(pokeName,
 								new Pokemon(number, pokeName, (Boolean) innerObj.get("catch"),
@@ -80,7 +80,7 @@ public class JSONHandler {
 							DPSUtils.setPokeCatchCounter(Integer.parseInt((String) innerObj.get("amount")));
 					}
 				}
-				if (pokehash.size()+1 != AllPokemonNames.amountOfPokemons) {
+				if (pokehash.size() + 1 != AllPokemonNames.amountOfPokemons) {
 					Iterator it = pokehash.entrySet().iterator();
 					for (int x = 0; x <= pokehash.size(); x++)
 						poke.add(new Pokemon());
@@ -93,7 +93,8 @@ public class JSONHandler {
 				} else {
 					System.err.println("Error with pokemons in settings.json, creating file from scratch!");
 					poke = createNewFileList();
-					new AllJsonData(token == null ? "" : token, poke, 995, autoFarm == null ? true : autoFarm, waitingTime == null ? 60 : waitingTime);
+					new AllJsonData(token == null ? "" : token, poke, 995, autoFarm == null ? true : autoFarm,
+							waitingTime == null ? 60 : waitingTime);
 				}
 			} else {
 				System.err.println("settings.json file was not found, creating file.");
