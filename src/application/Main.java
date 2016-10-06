@@ -1,10 +1,12 @@
 package application;
 
+import entities.AllPokemonNames;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import resources.DPSUtils;
+import threads.CatchMe;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -22,6 +24,8 @@ public class Main extends Application {
 			primaryStage.setMinWidth(605.0);        
 			primaryStage.setMinHeight(400.0);
 			primaryStage.setOnCloseRequest(e -> {
+				DPSUtils.stopBot("User closed the program!");
+				JSONHandler.UpdatePokeList();
 				Platform.exit();
 				System.exit(0);
 			});
@@ -31,8 +35,11 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		new AllPokemonNames();
 		DPSUtils.setCurrentDirectoryLocation();
 		DPSUtils.loadSnipingPokemon();
+		Thread catchs = new CatchMe();
+		catchs.start();
 		launch(args);
 	}
 

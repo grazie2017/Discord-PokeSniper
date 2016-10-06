@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import entities.AllJsonData;
 import entities.Pokemon;
@@ -20,7 +21,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import listeners.MyMasterBallListener;
 import listeners.MyPokemonChangeListener;
+import listeners.MyTotalAmountListener;
+import listeners.MyWaitingTimeListener;
 import resources.DPSUtils;
 import javafx.scene.control.CheckBox;
 
@@ -29,8 +33,6 @@ public class MyController implements Initializable {
 	private Button StartBot;
 	@FXML
 	private GridPane PokeListGrid;
-	private static Boolean start = false;
-
 	@FXML
 	private TextField token;
 	@FXML
@@ -39,15 +41,37 @@ public class MyController implements Initializable {
 	private ScrollPane ScrollForLog;
 	@FXML
 	private Button MoreInfo;
+	@FXML
+	private Button resetCounter;
+	@FXML
+	private Label pokeCounter;
+	@FXML
+	private TextField totalAmount;
+	@FXML
+	private CheckBox farmPokestops;
+	@FXML
+	private TextField waitingTime;
+	private static Boolean start = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 		try {
 			initializePokemonList();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void pokeFarmEnable() {
+		AllJsonData.setPokeFarm(farmPokestops.isSelected());
+	}
+
+	public void resetCounterNow() {
+		for (Pokemon poke : AllJsonData.getPokelist()) {
+			if (poke.getId() != null)
+				poke.setAmount(0);
+		}
+		pokeCounter.setText("0");
 	}
 
 	public void updateToken() {
@@ -56,7 +80,9 @@ public class MyController implements Initializable {
 
 	public void openPaypalLink() {
 		try {
-			Desktop.getDesktop().browse(new URL("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNDFMD6MVL4KN").toURI());
+			Desktop.getDesktop().browse(
+					new URL("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNDFMD6MVL4KN")
+							.toURI());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +91,7 @@ public class MyController implements Initializable {
 
 	public void startTheBot() {
 		// TODO
-		if(token.getText().isEmpty()) {
+		if (token.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("No token entered!");
 			alert.setHeaderText("No token was entered!");
@@ -90,23 +116,25 @@ public class MyController implements Initializable {
 	}
 
 	public void initializePokemonList() throws InterruptedException {
-		Thread.sleep(1100);
 		int x = 0;
 		ArrayList<Pokemon> list = AllJsonData.getPokelist();
 		for (Pokemon poke : list) {
-			CheckBox checkBox = new CheckBox();
-			checkBox.setText(poke.getDispalyName());
-			checkBox.setSelected(poke.getCatchable());
-			checkBox.setId(poke.getId().toString());
-			checkBox.selectedProperty().addListener(new MyPokemonChangeListener<Boolean>(poke));
-			Label lable = new Label(poke.getAmount().toString());
-			poke.setLabel(lable);
-			RowConstraints row = new RowConstraints();
-			row.setMaxHeight(30);
-			row.setMinHeight(30);
-			PokeListGrid.getRowConstraints().add(row);
-			PokeListGrid.addRow(x, checkBox, lable);
-			x++;
+			if (poke.getId() != null) {
+				CheckBox checkBox = new CheckBox();
+				checkBox.setText(String.format("%03d", poke.getId()) + ": " + poke.getDisplayName());
+				checkBox.setSelected(poke.getCatchable());
+				checkBox.setId(poke.getId().toString());
+				checkBox.selectedProperty().addListener(new MyPokemonChangeListener<Boolean>(poke));
+				Label lable = new Label(poke.getAmount().toString());
+				poke.setLabel(lable);
+				poke.setCheckbox(checkBox);
+				RowConstraints row = new RowConstraints();
+				row.setMaxHeight(20);
+				row.setMinHeight(20);
+				PokeListGrid.getRowConstraints().add(row);
+				PokeListGrid.addRow(x, checkBox, lable);
+				x++;
+			}
 		}
 
 		this.token.setText(AllJsonData.getToken());
@@ -118,7 +146,16 @@ public class MyController implements Initializable {
 			}
 		});
 		AllJsonData.setScrollForLog(this.ScrollForLog);
-
+		pokeCounter.setText(DPSUtils.getPokeCatchCounter().toString());
+		DPSUtils.setFullCounter(pokeCounter);
+		farmPokestops.selectedProperty().addListener(new MyMasterBallListener<Boolean>());
+		farmPokestops.setSelected(AllJsonData.getPokeFarm());
+		DPSUtils.setWaitingTime(waitingTime);
+		waitingTime.setText(AllJsonData.getWaitingTime() + "");
+		waitingTime.focusedProperty().addListener(new MyWaitingTimeListener<Boolean>());
+		DPSUtils.setAmountToCatch(totalAmount);
+		totalAmount.setText(AllJsonData.getAmountToCatch().toString());
+		totalAmount.focusedProperty().addListener(new MyTotalAmountListener<Boolean>());
 	}
 
 	public void showPopUp() {
@@ -126,12 +163,48 @@ public class MyController implements Initializable {
 		alert.setTitle("About");
 		alert.setHeaderText("DiscordPokeSniper " + DPSUtils.getVersion());
 		alert.setContentText(
-				"This program was built by RebliNk17.\nIt is based on DiscordSniper of CandyBuns and PokeSniper2 program.");
+				"This program was built by RebliNk17.\n\nIt is based on DiscordSniper of CandyBuns, PokeSniper2 and Masterball bot.\n\n"
+						+ "All of them are combined together so you can snipe all night long ;)\n\n" + "Enjoy!\n\n"
+						+ "If you can afford, please consider donation. Thank you :)");
 		alert.showAndWait();
 	}
-	
+
 	public static Boolean getStart() {
 		return start;
+	}
+
+	public void changeTotalAmount() {
+		if (Pattern.compile("(\\D)").matcher(totalAmount.getText()).find())
+			totalAmount.setText(totalAmount.getText().replaceAll("(\\D)", ""));
+		if (!totalAmount.getText().isEmpty()) {
+			if (Integer.parseInt(totalAmount.getText()) > 995)
+				totalAmount.setText("995");
+			AllJsonData.setAmountToCatch(Integer.parseInt(totalAmount.getText()));
+		}
+	}
+
+	public void changeWaitingTime() {
+		if (Pattern.compile("(\\D)").matcher(waitingTime.getText()).find())
+			waitingTime.setText(waitingTime.getText().replaceAll("(\\D)", ""));
+		if (!waitingTime.getText().isEmpty()) {
+			if (Integer.parseInt(waitingTime.getText()) > 3600)
+				waitingTime.setText("3600");
+			AllJsonData.setWaitingTime(Integer.parseInt(waitingTime.getText()));
+		}
+	}
+
+	public void selectAllpokemons() {
+		for (Pokemon poke : AllJsonData.getPokelist()) {
+			if (poke.getId() != null)
+				poke.getCheckbox().setSelected(true);
+		}
+	}
+
+	public void deSelectAllPokemons() {
+		for (Pokemon poke : AllJsonData.getPokelist()) {
+			if (poke.getId() != null)
+				poke.getCheckbox().setSelected(false);
+		}
 	}
 
 	public static void setStart(Boolean start) {

@@ -1,9 +1,12 @@
 package resources;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,9 +15,10 @@ import org.apache.commons.lang.StringUtils;
 import entities.AllJsonData;
 import entities.Pokemon;
 
-class SyncPipe implements Runnable {
+public class SyncPipe implements Runnable {
+	public static boolean caught = false;
 	private Boolean flag = false;
-
+	private static String details;
 	public SyncPipe(InputStream istrm, OutputStream ostrm) {
 		istrm_ = istrm;
 		// ostrm_ = ostrm;
@@ -25,25 +29,36 @@ class SyncPipe implements Runnable {
 			BufferedReader br = new BufferedReader(new InputStreamReader(istrm_, "UTF-8"));
 			String str = new String();
 			while ((str = br.readLine()) != null) {
-				AnalizeString(str);
+				analyzeString(str);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void AnalizeString(String str) {
-		Pokemon temp = CheckWhatWasCaught(str);
+	private void analyzeString(String str) {
+		Pokemon temp = checkWhatWasCaught(str);
 		if (str.contains("There is no"))
-			DPSUtils.log("The Pokemon " + temp.getDispalyName() + " was not found at the location.");
-		if (str.contains("We caught a")) {
+			DPSUtils.log("The Pokemon " + temp.getDisplayName() + " was not found at the location.", MyColors.notFound);
+		else if (str.contains("We caught a")) {
+			caught = true;
 			temp.updateLableValue();
-			DPSUtils.log("The Pokemon " + temp.getDispalyName() + " was caught.");
-		}
-		if (str.contains("got away.")) {
-			DPSUtils.log("The Pokemon " + temp.getDispalyName() + " got away.");
-		}
-		if (str.contains("We have") && str.contains("berries left")) {
+			DPSUtils.log(temp.getDisplayName() + " was caught", MyColors.caught);
+		} else if (str.contains(" - CP: ") && caught) {
+			details = str;
+		} else if (str.contains(" - IV: ") && caught) {
+			details = details +"\n"+str;
+			Pattern pattern = Pattern.compile("(- CP: (\\d+))\\s+(- IV: (\\d+(.\\d+)?))");
+			Matcher matcher = pattern.matcher(details);
+			if (matcher.find()) {
+				String iv = matcher.group(4);
+				iv = iv.length() > 5 ? iv.substring(0,5) : iv;
+				DPSUtils.log("That pokemon is " + iv + "% IV and " + matcher.group(2) +" CP!",
+						iv.equals("100") ? MyColors.caught : MyColors.gotAway);
+			}
+		} else if (str.contains("got away.")) {
+			DPSUtils.log("The Pokemon " + temp.getDisplayName() + " got away.", MyColors.gotAway);
+		} else if (str.contains("We have") && str.contains("berries left")) {
 			Pattern p = Pattern.compile("\\d+");
 			Matcher m = p.matcher(str);
 			String s = "";
@@ -52,7 +67,7 @@ class SyncPipe implements Runnable {
 					s += "We have " + m.group() + " Pokeballs, ";
 					if (Integer.parseInt(m.group()) == 0) {
 						DPSUtils.stopBot();
-						this.flag=true;
+						this.flag = true;
 					}
 				} else if (x == 4) {
 					s += "" + m.group() + " berries, ";
@@ -61,24 +76,84 @@ class SyncPipe implements Runnable {
 				}
 			}
 			DPSUtils.log(s);
-		}
-		if(str.contains("Got into the fight without any Pokeballs")) {
-			flag=true;
+		} else if (str.contains("Got into the fight without any Pokeballs")) {
+			flag = true;
+		} else if (str.contains("is not recognized as an internal or externa")) {
+			DPSUtils.log(" - Can not find Pokesniper2.exe file. ", MyColors.hardError);
+			DPSUtils.log(" - did you put them in the same folder?", MyColors.hardError);
+			DPSUtils.stopBot("Can not catch pokemons with no Pokesniper2.exe file.");
+		} else if (str.contains("Could not load settings")) {
+			DPSUtils.log(" - Please check whether user.xml file is edited currectly.", MyColors.hardError);
+			DPSUtils.stopBot("Problem with user.xml file.");
+		} else if (str.contains("Please confirm that the PokemonGo servers are online before using")) {
+			DPSUtils.log(" - Please check whether user.xml file is edited currectly, or PokemonGo servers are online!",
+					MyColors.hardError);
+			DPSUtils.stopBot("Could not connect to Pokemon Go servers.");
+		} else if (str.contains("Next PokeStop is")) {
+			DPSUtils.setPokestopsRobed();
+			DPSUtils.log("Another Pokestop was robbed, total robbed: " + DPSUtils.getPokestopsRobed(),
+					MyColors.pokestopRobbed);
+		} else if (str.contains("Inventory is full! Will now walk back to the start and stop there")) {
+			Pattern pattern = Pattern.compile("((\\d+).?(\\d+)m)");
+			Matcher matcher = pattern.matcher(str);
+			Double doublesFound = 0.0;
+			if (matcher.find()) {
+				String st = matcher.group(1);
+				doublesFound = Double.parseDouble(st.replace(',', '.').substring(0, st.length() - 1));
+			}
+			doublesFound /= 25;
+			DecimalFormat df = new DecimalFormat("####.####");
+			doublesFound = Double.parseDouble(df.format(doublesFound).replace(',', '.'));
+			Long timeWait = Math.round(doublesFound) + 1;
+			DPSUtils.log("Finished! waiting " + timeWait + " seconds to return to start point.", MyColors.finishedRob);
+			DPSUtils.log("After returning home, bot will continue his job :) ", MyColors.finishedRob);
+			try {
+				Thread.sleep(timeWait * 1000);
+				DPSUtils.startBot();
+			} catch (NumberFormatException | InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
-		if(flag==true) {
-			DPSUtils.log("No more Pokeballs left, stoping bot");
-			flag=false;
+		if (flag == true) {
+			DPSUtils.stopBot("No more Pokeballs left!");
+			if (AllJsonData.getPokeFarm()) {
+				if (DPSUtils.getPokestopsRobed() >= 1700) {
+					DPSUtils.forceStopBot("You've robbed " + DPSUtils.getPokestopsRobed() + " Pokestops.");
+				} else {
+					DPSUtils.log("Start farming pokeballs with Masterball bot.", MyColors.pokestopRobbed);
+					String[] command = { "cmd", };
+					Process proc = null;
+					try {
+						proc = Runtime.getRuntime().exec(command);
+						new Thread(new SyncPipe(proc.getErrorStream(), System.err)).start();
+						new Thread(new SyncPipe(proc.getInputStream(), System.out)).start();
+						PrintWriter stdin = new PrintWriter(proc.getOutputStream());
+						stdin.println("cd " + DPSUtils.getCurrentDirectory() + "\n");
+						stdin.println("cd masterball\n");
+						stdin.println("masterball.exe");
+						stdin.close();
+						proc.waitFor();
+						proc.destroy();
+					} catch (IOException | InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			flag = false;
 		}
 	}
 
-	private Pokemon CheckWhatWasCaught(String str) {
+	private Pokemon checkWhatWasCaught(String str) {
 		Pokemon pokemonType = null;
 		for (Pokemon type : AllJsonData.getPokelist()) {
-			if (StringUtils.containsIgnoreCase(str, type.getName())
-					|| StringUtils.containsIgnoreCase(str, type.getDispalyName())) {
-				pokemonType = type;
-				break;
+			if (type.getId() != null) {
+				if (StringUtils.containsIgnoreCase(str, type.getName())
+						|| StringUtils.containsIgnoreCase(str, type.getDisplayName())) {
+					pokemonType = type;
+					break;
+				}
 			}
 		}
 		return pokemonType;
