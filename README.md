@@ -10,7 +10,7 @@ Enjoy :)
 ---------------------------------------------------------------
 
 <B><h1>Please make a donation if you can afford to</h1></B>
-https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=y7vAKlDZWfmNLfou0v9SyUUjgmrWjNENkNZGDuLSZjCi3MW1UIqnjd4_7NS&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088
+https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNDFMD6MVL4KN
 
 Thanks for the donations until now. I really appreciate all the donations. :)
 
