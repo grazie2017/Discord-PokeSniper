@@ -71,6 +71,23 @@ Masterball bot:<BR>
 ---------------------------------------------------------------
 
 <B><h1>CHANGES:</h1></B>
+
+Changes from v1.4.2 to 1.5.0:
+
+	* Now shows CP of caught pokemon in log
+	* Can change time of waiting between snipes
+	* When pokemon not caught waiting time is 5-8s which is enough.
+	* Creating a stack of pokemons that the bot found with 100% and not tried to caught yet,
+		so now even if no more pokeballs left, the list of 100% pokemons we found will not delete.
+	* Changed lots of code so it will now work better and faster
+	* Change UI a bit.
+	* If setting.json file was not found, or data is missing, create new settings.json file.
+	* settings.json IS NOt INCLUDE IN ZIP FILE!!! auto create if missing!!
+	* Fix more pokemons name for some pokemons.
+	* Fix bug with changing "catching limitation" field, caused runtime error whan entering no digit char.
+	* Fix bug that caused some settings not to be saved on bot closing.
+	* Safe closing the bot -> disconnect from discord.
+	
 Changes from v1.4.1 to 1.4.2:
 
 	* Fix nidoran female and male snipping problem
