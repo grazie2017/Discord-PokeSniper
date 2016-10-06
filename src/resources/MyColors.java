@@ -1,6 +1,5 @@
 package resources;
 
-
 public class MyColors {
 	public final static String error = "#ff8686";
 	public final static String caught = "#68f24a";

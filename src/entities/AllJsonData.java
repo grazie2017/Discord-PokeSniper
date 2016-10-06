@@ -14,7 +14,7 @@ public class AllJsonData {
 	private static Integer amountToCatch;
 	private static Boolean pokeFarm;
 	private static Integer waitingTime;
-	
+
 	public AllJsonData(String token, ArrayList<Pokemon> list, Integer amount, Boolean autoFarm, Integer waitingTime) {
 		AllJsonData.token = token;
 		AllJsonData.pokelist = list;
@@ -35,7 +35,7 @@ public class AllJsonData {
 		AllJsonData.pokeFarm = pokeFarm;
 		JSONHandler.UpdatePokeList();
 	}
-	
+
 	public static void setToken(String token) {
 		AllJsonData.token = token;
 		JSONHandler.UpdatePokeList();
@@ -52,7 +52,7 @@ public class AllJsonData {
 	public static void setLog(VBox logArea) {
 		AllJsonData.view = logArea;
 	}
-	
+
 	public static VBox getLog() {
 		return view;
 	}

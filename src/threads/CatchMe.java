@@ -63,7 +63,10 @@ public class CatchMe extends Thread {
 					wait = rand.nextInt(2500) + 5000;
 				}
 				Double dob = wait / 1000.0;
-				DPSUtils.log("Waiting " + String.valueOf(dob).substring(0, String.valueOf(dob).length() > 5 ? 5 : String.valueOf(dob).length()) + "s to prevent ban!");
+				DPSUtils.log("Waiting "
+						+ String.valueOf(dob).substring(0,
+								String.valueOf(dob).length() > 5 ? 5 : String.valueOf(dob).length())
+						+ "s to prevent ban!");
 				Thread.sleep(wait);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

@@ -100,7 +100,7 @@ public class DPSUtils {
 
 	public static void stopBot() {
 		if (disCon != null)
-		disCon.terminate();
+			disCon.terminate();
 	}
 
 	public static void stopBot(String str) {
@@ -112,7 +112,7 @@ public class DPSUtils {
 	public static void forceStopBot(String str) {
 		DPSUtils.log("Stoping Bot, Reason: " + str, MyColors.hardError);
 		if (disCon != null)
-		disCon.forceTerminate();
+			disCon.forceTerminate();
 	}
 
 	public static void setCurrentDirectoryLocation() {
