@@ -23,13 +23,15 @@ import threads.DiscordConnection;
 public class DPSUtils {
 	private static String currentDirectory = null;
 	private static DiscordConnection disCon;
-	private static String version = "v1.4.2";
+	private static String version = "v1.5.0";
 	private static Boolean running = false;
 	private static Integer pokeCatchCounter = 0;
 	private static Label fullCounter;
 	private static Button btn;
 	private static TextField token;
 	private static Integer pokestopsRobed = 0;
+	private static TextField waitingTime;
+	private static TextField amountToCatch;
 
 	public static double formatCoords(double coords) {
 		DecimalFormat df = new DecimalFormat("###.#####");
@@ -61,7 +63,7 @@ public class DPSUtils {
 		RowConstraints row = new RowConstraints();
 		row.setMaxHeight(30);
 		row.setMinHeight(30);
-		lab.setStyle("-fx-text-fill: "+color+"; -fx-font-weight: bold;");
+		lab.setStyle("-fx-text-fill: " + color + "; -fx-font-weight: bold;");
 
 		Platform.runLater(new Runnable() {
 			@Override
@@ -97,16 +99,19 @@ public class DPSUtils {
 	}
 
 	public static void stopBot() {
+		if (disCon != null)
 		disCon.terminate();
 	}
 
 	public static void stopBot(String str) {
 		DPSUtils.log("Stoping Bot, Reason: " + str, MyColors.error);
-		disCon.terminate();
+		if (disCon != null)
+			disCon.terminate();
 	}
 
 	public static void forceStopBot(String str) {
 		DPSUtils.log("Stoping Bot, Reason: " + str, MyColors.hardError);
+		if (disCon != null)
 		disCon.forceTerminate();
 	}
 
@@ -183,6 +188,22 @@ public class DPSUtils {
 
 	public static void setPokestopsRobed() {
 		DPSUtils.pokestopsRobed++;
+	}
+
+	public static TextField getWaitingTime() {
+		return waitingTime;
+	}
+
+	public static void setWaitingTime(TextField waitingTime) {
+		DPSUtils.waitingTime = waitingTime;
+	}
+
+	public static TextField getAmountToCatch() {
+		return amountToCatch;
+	}
+
+	public static void setAmountToCatch(TextField amountToCatch) {
+		DPSUtils.amountToCatch = amountToCatch;
 	}
 
 }

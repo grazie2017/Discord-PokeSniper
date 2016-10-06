@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import entities.AllJsonData;
 import entities.Pokemon;
@@ -22,6 +23,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import listeners.MyMasterBallListener;
 import listeners.MyPokemonChangeListener;
+import listeners.MyTotalAmountListener;
+import listeners.MyWaitingTimeListener;
 import resources.DPSUtils;
 import javafx.scene.control.CheckBox;
 
@@ -46,7 +49,8 @@ public class MyController implements Initializable {
 	private TextField totalAmount;
 	@FXML
 	private CheckBox farmPokestops;
-
+	@FXML
+	private TextField waitingTime;
 	private static Boolean start = false;
 
 	@Override
@@ -117,7 +121,7 @@ public class MyController implements Initializable {
 		for (Pokemon poke : list) {
 			if (poke.getId() != null) {
 				CheckBox checkBox = new CheckBox();
-				checkBox.setText(String.format("%03d", poke.getId()) +": " +poke.getDisplayName());
+				checkBox.setText(String.format("%03d", poke.getId()) + ": " + poke.getDisplayName());
 				checkBox.setSelected(poke.getCatchable());
 				checkBox.setId(poke.getId().toString());
 				checkBox.selectedProperty().addListener(new MyPokemonChangeListener<Boolean>(poke));
@@ -143,10 +147,15 @@ public class MyController implements Initializable {
 		});
 		AllJsonData.setScrollForLog(this.ScrollForLog);
 		pokeCounter.setText(DPSUtils.getPokeCatchCounter().toString());
-		totalAmount.setText(AllJsonData.getAmountToCatch().toString());
 		DPSUtils.setFullCounter(pokeCounter);
-		farmPokestops.selectedProperty().addListener(new MyMasterBallListener<Boolean>(farmPokestops));
+		farmPokestops.selectedProperty().addListener(new MyMasterBallListener<Boolean>());
 		farmPokestops.setSelected(AllJsonData.getPokeFarm());
+		DPSUtils.setWaitingTime(waitingTime);
+		waitingTime.setText(AllJsonData.getWaitingTime() + "");
+		waitingTime.focusedProperty().addListener(new MyWaitingTimeListener<Boolean>());
+		DPSUtils.setAmountToCatch(totalAmount);
+		totalAmount.setText(AllJsonData.getAmountToCatch().toString());
+		totalAmount.focusedProperty().addListener(new MyTotalAmountListener<Boolean>());
 	}
 
 	public void showPopUp() {
@@ -165,10 +174,22 @@ public class MyController implements Initializable {
 	}
 
 	public void changeTotalAmount() {
+		if (Pattern.compile("(\\D)").matcher(totalAmount.getText()).find())
+			totalAmount.setText(totalAmount.getText().replaceAll("(\\D)", ""));
 		if (!totalAmount.getText().isEmpty()) {
 			if (Integer.parseInt(totalAmount.getText()) > 995)
 				totalAmount.setText("995");
 			AllJsonData.setAmountToCatch(Integer.parseInt(totalAmount.getText()));
+		}
+	}
+
+	public void changeWaitingTime() {
+		if (Pattern.compile("(\\D)").matcher(waitingTime.getText()).find())
+			waitingTime.setText(waitingTime.getText().replaceAll("(\\D)", ""));
+		if (!waitingTime.getText().isEmpty()) {
+			if (Integer.parseInt(waitingTime.getText()) > 3600)
+				waitingTime.setText("3600");
+			AllJsonData.setWaitingTime(Integer.parseInt(waitingTime.getText()));
 		}
 	}
 

@@ -21,7 +21,7 @@ public class Pokemon {
 	 * this.id = id; this.name = name; this.displayName = dName == null ? name :
 	 * dName; this.catchable = c; this.setAmount(0)*; }
 	 */
-	public Pokemon(Integer id, String name, Boolean c, String dName, String amount) {
+	public Pokemon(Integer id, String name, Boolean c, String dName, Integer amount) {
 		this.id = id;
 		this.name = name;
 		this.displayName = dName == null ? name : dName;
@@ -30,6 +30,14 @@ public class Pokemon {
 			this.setAmount(Integer.valueOf(amount));
 		else
 			this.setAmount(0);
+	}
+
+	public Pokemon(String id, String name, String disName) {
+		this.id = Integer.parseInt(id);
+		this.name = name;
+		this.displayName = disName.length() > 0 ? disName : name;
+		this.catchable = true;
+		this.amount = 0;
 	}
 
 	public Pokemon() {

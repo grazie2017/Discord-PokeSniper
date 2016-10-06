@@ -16,8 +16,9 @@ import entities.AllJsonData;
 import entities.Pokemon;
 
 public class SyncPipe implements Runnable {
+	public static boolean caught = false;
 	private Boolean flag = false;
-
+	private static String details;
 	public SyncPipe(InputStream istrm, OutputStream ostrm) {
 		istrm_ = istrm;
 		// ostrm_ = ostrm;
@@ -40,8 +41,21 @@ public class SyncPipe implements Runnable {
 		if (str.contains("There is no"))
 			DPSUtils.log("The Pokemon " + temp.getDisplayName() + " was not found at the location.", MyColors.notFound);
 		else if (str.contains("We caught a")) {
+			caught = true;
 			temp.updateLableValue();
-			DPSUtils.log("The Pokemon " + temp.getDisplayName() + " was caught.", MyColors.caught);
+			DPSUtils.log(temp.getDisplayName() + " was caught", MyColors.caught);
+		} else if (str.contains(" - CP: ") && caught) {
+			details = str;
+		} else if (str.contains(" - IV: ") && caught) {
+			details = details +"\n"+str;
+			Pattern pattern = Pattern.compile("(- CP: (\\d+))\\s+(- IV: (\\d+(.\\d+)?))");
+			Matcher matcher = pattern.matcher(details);
+			if (matcher.find()) {
+				String iv = matcher.group(4);
+				iv = iv.length() > 5 ? iv.substring(0,5) : iv;
+				DPSUtils.log("That pokemon is " + iv + "% IV and " + matcher.group(2) +" CP!",
+						iv.equals("100") ? MyColors.caught : MyColors.gotAway);
+			}
 		} else if (str.contains("got away.")) {
 			DPSUtils.log("The Pokemon " + temp.getDisplayName() + " got away.", MyColors.gotAway);
 		} else if (str.contains("We have") && str.contains("berries left")) {
@@ -100,20 +114,7 @@ public class SyncPipe implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		if (str.contains(" - IV: ")) {
-			if (str.contains(" - IV: 100"))
-				DPSUtils.log("That pokemon was 100% IV!", MyColors.caught);
-			else {
-				Pattern pattern = Pattern.compile("IV: \\d+.\\d+");
-				Matcher matcher = pattern.matcher(str);
-				if (matcher.find()) {
-					String st = matcher.group();
-					st = st.replace("IV: ", "");
-					DPSUtils.log("That pokemon was " + st.substring(0,5) + "% IV!", MyColors.gotAway);
-				}
 
-			}
-		}
 		if (flag == true) {
 			DPSUtils.stopBot("No more Pokeballs left!");
 			if (AllJsonData.getPokeFarm()) {
