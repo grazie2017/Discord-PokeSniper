@@ -65,6 +65,8 @@ public class JSONHandler {
 						}
 						if (number == 83)
 							checkName = "Farfetch'd";
+						if (number == 84)
+							checkName = pokeName;
 						if (number == 122)
 							checkName = "Mr. Mime";
 						if(checkName == null) 
