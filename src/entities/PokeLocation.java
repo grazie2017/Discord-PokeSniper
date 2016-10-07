@@ -67,7 +67,7 @@ public class PokeLocation {
 		if (latitude % 1 == 0 || longitude % 1 == 0)
 			return null;
 		// Find if it is 100IV pokemon
-		String st = "(((IV|iv):? ?%?100.?(\\d{2})?%?)|(100.?(\\d{2})?%? ?(IV|iv))|(100.?(\\d{2})?%)|% ?100.?(\\d{2})?)";
+		String st = "IV:? ?100(.0+)?|iv:? ?100(.0+)?|iv:? ?\\(100(.0+)?\\)|IV:? ?\\(100(.0+)?\\)|100(.0+)? ?IV|100(.0+)? ?iv|100(.0+)? ?%|% ?100(.0+)?";
 		Pattern patternIV = Pattern.compile(st);
 		Matcher matcherIV = patternIV.matcher(notificationString);
 		boolean is100IV = matcherIV.find() || checkInString100Icon(notificationString);
