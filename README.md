@@ -1,4 +1,4 @@
-# Discord PokeSniper v1.5.1
+# Discord PokeSniper v1.5.2
 <B>Discord PokeSniper</B> is a bot that based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
 
 Lots of the code of <B>CandyBuns</B> has been changed by me, and a lot more code has been added by me.
@@ -80,6 +80,11 @@ Masterball bot:<BR>
 
 <B><h1>CHANGES:</h1></B>
 
+Changes from v1.5.1 to 1.5.2:
+
+	* Fix a bug that caused bot to stop catching after reading duplicates pokemons
+	* Add another discord 100% 
+--------------------------------------------------------------- 
 Changes from v1.5.0 to 1.5.1:
 
 	* Fix a small issue that cause Doduo display wrong name in gui window
