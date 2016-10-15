@@ -6,7 +6,7 @@
 
 # Source code notification
 
-Due to some major and important updates in v2+, I will no longer publinh source code for Discord-PokeSniper, I will however, uploaded antivirus check. 
+Due to some major and important updates in v2+, I will no longer publish source code for Discord-PokeSniper, I will however, uploaded antivirus check. 
 
 
 
