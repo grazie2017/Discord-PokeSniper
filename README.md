@@ -6,7 +6,7 @@
 
 # Source code notification
 
-
+Due to some major and important updates in v2+, I will no longer publinh source code for Discord-PokeSniper, I will however, uploaded antivirus check. 
 
 
 
@@ -14,11 +14,12 @@
 
 # Updates
 
-EHT 
+The Api for the New pokemon go version is almost read, I believe that in few days I will publish V2. 
 
 
 
 
+# About Discord PokeSniper (DPS) 
 
 Lots of the code of <B>CandyBuns</B> has been changed by me, and a lot more code has been added by me.
 
