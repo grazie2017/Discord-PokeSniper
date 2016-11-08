@@ -6,7 +6,7 @@
 
 # Source code notification
 
-Due to some major and important updates in v2+, I will no longer publish source code for Discord-PokeSniper, I will however, uploaded antivirus check:
+Due to fake versions that published over the web, some major and important updates in v2+, I will no longer publish source code for Discord-PokeSniper, I will, however, uploaded antivirus check:
 https://www.virustotal.com/en/file/bfb0187f5c769d877ac06335e9e41f5a5481d45607d15caf182bc491110a6a18/analysis/1478567923/
 Virus check for DPS v2.1
 
