@@ -1,27 +1,30 @@
-# Discord PokeSniper v1.5.2 - Currently not working!
+# Discord PokeSniper v2.1 - Working!
 
 
-<B>Discord PokeSniper</B> is a bot that based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
+<B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
 
 
 # Source code notification
 
-Due to some major and important updates in v2+, I will no longer publish source code for Discord-PokeSniper, I will however, uploaded antivirus check. 
+Due to some major and important updates in v2+, I will no longer publish source code for Discord-PokeSniper, I will however, uploaded antivirus check:
+https://www.virustotal.com/en/file/bfb0187f5c769d877ac06335e9e41f5a5481d45607d15caf182bc491110a6a18/analysis/1478567923/
+Virus check for DPS v2.1
 
-
-
+# Discord PokeSniper Website
+http://discordps.com
+Download only from this site! nowhere else!
+there are fake versions out there. BE AWARE!
 
 
 # Updates
 
-The Api for the New pokemon go version is almost read, I believe that in few days I will publish V2. 
-
+Version 2.1 is out with major updates!
 
 
 
 # About Discord PokeSniper (DPS) 
 
-Lots of the code of <B>CandyBuns</B> has been changed by me, and a lot more code has been added by me.
+99% of the code of <B>CandyBuns</B> has been changed by me, and a lot more code has been added by me.
 
 Also, the <B>Discord PokeSniper</B> is with GUI and <B>easy to use!</B>
 
@@ -45,15 +48,17 @@ Thanks for the donations until now. I really appreciate all the donations. :)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131489/425ccb42-8b58-11e6-9c28-91226e5612d9.jpg)
 
+![alt_tag](http://dps.cmshai.com/img/gif/g.gif)
+
 ---------------------------------------------------------------
 
 <B><h1>How to use:</h1></B>
 
 1) put all the files in the zip file in the same folder.
 
-2) download Pokesniper2 1.12.
+2) download Pokesniper2 1.21.
 
-3) edit the pokesniper2 1.12 user.xml file to fit your user details.
+3) edit the pokesniper2 1.21 user.xml file to fit your user details.
 
 4) run discordPokesniper.jar or Start_DiscordPokeSniper.bat.
 
@@ -100,6 +105,33 @@ Masterball bot:<BR>
 
 <B><h1>CHANGES:</h1></B>
 
+Changes from v2.0 to v2.1:
+	* Fix problem that prevent user from catching some pokemons with different IV than 100.
+	* Remove location (lat/lng) and radius from UI.
+	* Add account details entering in UI window, auto create user.xml file.
+	* Now use a better and smarter algorithm to snipe pokemons, no need to enter coordinates or radius.
+	* Due to those changes, the User Interface has been changed a bit.
+	* More bugs fixing.
+--------------------------------------------------------------- 
+Changes from v1.5.2 to v2.0:
+	* Code will be NOT be publish for security reasons.
+	* Better UI.
+	* Icon for DPS :-)
+	* Logo for DPS ;-)
+	* Lots of bug has been fixed.
+	* Lots of code has been re-write.
+	* Adjust to the new api
+	* Donators Privileges has beed add.
+	* Auto notify user of available updates and shows what the changes are.
+	* Support catching pokemons with IV's from x->y (example: between 90-95) - donators only!
+	* Support auto start DPS on launch - donators only!
+	* Only one login per donator will work.
+	* Can now put pokesniper2 files in the pokesniper2 directory next to the jar file
+	* Check whether pokesniper.exe exists - won't start if not! 
+	* Check whether masterball.exe exists - auto farm will not be available if not!
+	* Sniping is not good anymore, only local sniping are allowed
+		I add location from which you want to snipe, and raduis to snipe from.
+--------------------------------------------------------------- 
 Changes from v1.5.1 to 1.5.2:
 
 	* Fix a bug that caused bot to stop catching after reading duplicates pokemons
