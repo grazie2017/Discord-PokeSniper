@@ -1,4 +1,4 @@
-# Discord PokeSniper v2.1 - Working!
+# Discord PokeSniper v2.2 - Working!
 
 
 <B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
@@ -18,7 +18,7 @@ there are fake versions out there. BE AWARE!
 
 # Updates
 
-Version 2.1 is out with major updates!
+Version 2.2 is out with major updates!
 
 
 
@@ -40,13 +40,13 @@ Thanks for the donations until now. I really appreciate all the donations. :)
 ---------------------------------------------------------------
 
 
-![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131492/42633ebe-8b58-11e6-873c-11de7d026051.jpg)
+![alt tag](http://discordps.com/img/images/1.png)
 
-![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131490/425f3300-8b58-11e6-8aec-984a2cfce4d0.jpg)
+![alt tag](http://discordps.com/img/images/2.png)
 
-![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131491/426017e8-8b58-11e6-90f4-eef64af70308.jpg)
+![alt tag](http://discordps.com/img/images/3.png)
 
-![alt tag](https://cloud.githubusercontent.com/assets/21306877/19131489/425ccb42-8b58-11e6-9c28-91226e5612d9.jpg)
+![alt tag](http://discordps.com/img/images/4.png)
 
 ![alt_tag](http://dps.cmshai.com/img/gif/g.gif)
 
