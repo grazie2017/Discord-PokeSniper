@@ -107,7 +107,9 @@ Masterball bot:<BR>
 ---------------------------------------------------------------
 
 <B><h1>CHANGES:</h1></B>
-Release V2.3:
+
+Changes from v2.2 to v2.3:
+
 	* User interface has been changed a lot! must of the settings are now in new settings window.
 	* Save password is now for all users.
 	* Add the ability to choose between regular sniper and safer sniper.
@@ -120,8 +122,16 @@ Release V2.3:
 		[x] Speed for masterball (default: 50)
 		[x] Latitude and Longitude.
 	* Fix bug that caused donators to receive an error message when tring to connect as a donators.
-    
+---------------------------------------------------------------
+Changes from v2.1 to v2.2:
+
+	* Fix problem that caused an error for some user
+	* Improved the new sniping algorithm
+	* Now shows which pokemon has been enter to the waiting list of pokemons.
+	* Saving last sniping time and coordinates for safer sniping.
+---------------------------------------------------------------
 Changes from v2.0 to v2.1:
+
 	* Fix problem that prevent user from catching some pokemons with different IV than 100.
 	* Remove location (lat/lng) and radius from UI.
 	* Add account details entering in UI window, auto create user.xml file.
@@ -130,6 +140,7 @@ Changes from v2.0 to v2.1:
 	* More bugs fixing.
 --------------------------------------------------------------- 
 Changes from v1.5.2 to v2.0:
+
 	* Code will be NOT be publish for security reasons.
 	* Better UI.
 	* Icon for DPS :-)
