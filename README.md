@@ -1,4 +1,4 @@
-# Discord PokeSniper v2.2 - Working!
+# Discord PokeSniper v2.3 - Working!
 
 
 <B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
@@ -12,14 +12,17 @@ Virus check for DPS v2.1
 
 # Discord PokeSniper Website
 http://discordps.com
+
 Download only from this site! nowhere else!
+
 there are fake versions out there. BE AWARE!
 
 
 # Updates
 
-Version 2.2 is out with major updates!
+Version 2.3 is out with major updates!
 
+See changelog below.
 
 
 # About Discord PokeSniper (DPS) 
@@ -104,7 +107,20 @@ Masterball bot:<BR>
 ---------------------------------------------------------------
 
 <B><h1>CHANGES:</h1></B>
-
+Release V2.3:
+	* User interface has been changed a lot! must of the settings are now in new settings window.
+	* Save password is now for all users.
+	* Add the ability to choose between regular sniper and safer sniper.
+	* For regular sniping - this data can be changed:
+		[x] Waiting time between snipes
+		[x] Speed for masterball (default: 50)
+		[x] Latitude and Longitude.
+		[x] Catching tries.
+	* for safer sniping - this data can be changed:
+		[x] Speed for masterball (default: 50)
+		[x] Latitude and Longitude.
+	* Fix bug that caused donators to receive an error message when tring to connect as a donators.
+    
 Changes from v2.0 to v2.1:
 	* Fix problem that prevent user from catching some pokemons with different IV than 100.
 	* Remove location (lat/lng) and radius from UI.
