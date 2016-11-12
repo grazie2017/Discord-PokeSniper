@@ -1,4 +1,4 @@
-# Discord PokeSniper v2.3 - Working!
+# Discord PokeSniper v2.4 - Working!
 
 
 <B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
@@ -20,7 +20,7 @@ there are fake versions out there. BE AWARE!
 
 # Updates
 
-Version 2.3 is out with major updates!
+Version 2.4 is out with major updates!
 
 See changelog below.
 
@@ -108,6 +108,11 @@ Masterball bot:<BR>
 
 <B><h1>CHANGES:</h1></B>
 
+Changes from v2.3 to v2.4:
+
+	* Few important bug fix
+	* Safe sniper now supports "Catching tries" like regular sniper.
+---------------------------------------------------------------
 Changes from v2.2 to v2.3:
 
 	* User interface has been changed a lot! must of the settings are now in new settings window.
