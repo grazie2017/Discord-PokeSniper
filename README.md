@@ -1,7 +1,12 @@
-# Discord PokeSniper v2.4 - Working!
-
+# Discord PokeSniper v3.0 - Working support both 0.51.0, 0.45.0
 
 <B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
+In the past, it used 2 different programs to snipe and loot. 
+But today, this bot is Stand alone cross platform bot. 
+Support the new hash server of the BossLand team 0.51.0 and the 0.45.0 api
+
+
+Download: http://discordps.com/downloads.php 
 
 
 # Source code notification
@@ -20,19 +25,15 @@ there are fake versions out there. BE AWARE!
 
 # Updates
 
-Version 2.4 is out with major updates!
+Version 3 is out with major updates!
 
-See changelog below.
+See changelog below until v3.5
+V3 changlog TBD .
 
 
-# About Discord PokeSniper (DPS) 
+# About Discord PokeSniper (DPS)
 
-99% of the code of <B>CandyBuns</B> has been changed by me, and a lot more code has been added by me.
-
-Also, the <B>Discord PokeSniper</B> is with GUI and <B>easy to use!</B>
-
-Enjoy :)
-
+TBD
 ---------------------------------------------------------------
 
 <B><h1>Please make a donation if you can afford to</h1></B>
@@ -51,48 +52,24 @@ Thanks for the donations until now. I really appreciate all the donations. :)
 
 ![alt tag](http://discordps.com/img/images/4.png)
 
+![alt tag](http://discordps.com/img/images/5.png)
+
+![alt tag](http://discordps.com/img/images/6.png)
+
+![alt tag](http://discordps.com/img/images/7.png)
+
+![alt tag](http://discordps.com/img/images/8.png)
+
+![alt tag](http://discordps.com/img/images/9.png)
+
+![alt tag](http://discordps.com/img/images/10.png)
+
 ![alt_tag](http://dps.cmshai.com/img/gif/g.gif)
 
 ---------------------------------------------------------------
 
 <B><h1>How to use:</h1></B>
-
-1) put all the files in the zip file in the same folder.
-
-2) download Pokesniper2 1.21.
-
-3) edit the pokesniper2 1.21 user.xml file to fit your user details.
-
-4) run discordPokesniper.jar or Start_DiscordPokeSniper.bat.
-
-	the Start_DiscordPokeSniper.bat if for debug only.
-
-	you don't have to use it.
-
-5) post your token of discord in the gui window and click the button.
-
-
-<b><h1>If you want to use Masterball bot do the following:</h1></b>
-
-	1) Download Masterball bot
-	2) Create new folder in the folder where discordPokesniper.jar is and name it "masterball"
-	3) Extract masterball bot into the new folder
-	4) Set the user.xml file of masterball with same details of the pokesniper2 file.
-	5) Run the Discord pokesniper 1.4+ and start botting.
-
-Optional:
-
-you can select which pokemons to catch. (Default: catch all pokemon)
-
----------------------------------------------------------------
-<b><h1>Downloads:</h1></b>
-
-Pokesniper2:<BR>
-	http://www.ownedcore.com/forums/pokemon-go/pokemon-go-hacks-cheats/566079-pokesniper2-pokemon-sniper-catch-any-pokemon-no-matter-where-you.html <BR>
-Masterball bot:<BR>
-	http://www.ownedcore.com/forums/pokemon-go/pokemon-go-hacks-cheats/568101-masterball-pokestop-bot-farm-just-pokestops-items.html
-
-
+TBD
 ---------------------------------------------------------------
 
 <B><h1>How to get Discord Token (by Candybuns)</h1></B>
