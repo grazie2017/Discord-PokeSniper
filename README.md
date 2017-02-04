@@ -1,11 +1,11 @@
-# Discord PokeSniper v3.0 - Working! 
-<b>support both 0.51.0, 0.45.0</b>
+# Discord PokeSniper v3.4.1 - Working! 
+<b>support both 0.55.0, 0.45.0</b>
 
 
 <B>Discord PokeSniper</B> is a bot that was based on the <B><i>Discord 100IV auto Sniper</i></B> of <B>CandyBuns</B> and inspired by it.
 In the past, it used 2 different programs to snipe and loot. 
 But today, this bot is Stand alone cross platform bot. 
-Support the new hash server of the BossLand team 0.51.0 and the 0.45.0 api
+Support the new hash server of the BossLand team 0.55.0 and the 0.45.0 api
 
 
 Download: http://discordps.com/downloads.php 
@@ -29,7 +29,7 @@ there are fake versions out there. BE AWARE!
 
 Version 3 is out with major updates!
 
-See changelog below until v3.5
+See changelog below until v2.5
 V3 changlog TBD .
 
 
